@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bambam OS</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ===== BOOT SCREEN ===== -->
+    <div id="boot-screen" onclick="skipBoot()">
+        <div class="boot-logo"><span></span><span></span><span></span><span></span></div>
+        <div class="boot-spinner"></div>
+    </div>
+
+    <!-- ===== LOCK SCREEN ===== -->
+    <div id="lock-screen" onclick="unlock()">
+        <div id="lock-time">05:52</div>
+        <div id="lock-date">Thursday, August 20</div>
+        <div id="lock-hint">Click anywhere to unlock</div>
+    </div>
+
+    <!-- ===== DESKTOP ===== -->
+    <div id="desktop">
+
+        <div class="desktop-icons">
+            <div class="desktop-icon" ondblclick="openToSection('about')">
+                <div class="icon-box" style="background:linear-gradient(160deg,#58a6ff,#1c5fa8);">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="8" r="4"></circle>
+                        <path d="M4 21c0-4 3.5-7 8-7s8 3 8 7"></path>
+                    </svg>
+                </div>
+                <span>About Me</span>
+            </div>
+            <div class="desktop-icon" ondblclick="openToSection('projects')">
+                <div class="icon-box" style="background:linear-gradient(160deg,#ffca42,#d99a12);">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                    </svg>
+                </div>
+                <span>Projects</span>
+            </div>
+            <div class="desktop-icon" ondblclick="openToSection('resume')">
+                <div class="icon-box" style="background:linear-gradient(160deg,#4fd67a,#1f9a4d);">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <path d="M14 2v6h6"></path>
+                        <path d="M9 13h6"></path>
+                        <path d="M9 17h6"></path>
+                    </svg>
+                </div>
+                <span>Resume</span>
+            </div>
+            <div class="desktop-icon" ondblclick="openToSection('contact')">
+                <div class="icon-box" style="background:linear-gradient(160deg,#ff8a50,#e0522a);">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+                        <path d="m2 7 10 6 10-6"></path>
+                    </svg>
+                </div>
+                <span>Contact</span>
+            </div>
+        </div>
+
+        <!-- ===== START MENU ===== -->
+        <div id="start-menu">
+            <div class="start-search">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="7"></circle>
+                    <path d="m21 21-4.3-4.3"></path>
+                </svg>
+                <input type="text" placeholder="Type here to search">
+            </div>
+            <div class="start-label">Pinned</div>
+            <div class="pinned-grid">
+                <div class="pinned-app" onclick="openWindow()">
+                    <div class="icon-box" style="background:linear-gradient(160deg,#2f80ed,#1c4faa);">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2">
+                            <rect x="3" y="4" width="18" height="16" rx="2"></rect>
+                            <path d="M3 9h18"></path>
+                        </svg>
+                    </div>
+                    <span>Portfolio</span>
+                </div>
+                <div class="pinned-app">
+                    <div class="icon-box" style="background:linear-gradient(160deg,#4fd67a,#1f9a4d);">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                            <path d="M14 2v6h6"></path>
+                        </svg>
+                    </div>
+                    <span>Resume</span>
+                </div>
+                <div class="pinned-app">
+                    <div class="icon-box" style="background:linear-gradient(160deg,#ff8a50,#e0522a);">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2">
+                            <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+                            <path d="m2 7 10 6 10-6"></path>
+                        </svg>
+                    </div>
+                    <span>Mail</span>
+                </div>
+                <div class="pinned-app">
+                    <div class="icon-box" style="background:linear-gradient(160deg,#b58cff,#7c4dff);">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2">
+                            <circle cx="12" cy="12" r="9"></circle>
+                            <path d="M12 7v5l3 3"></path>
+                        </svg>
+                    </div>
+                    <span>Clock</span>
+                </div>
+                <div class="pinned-app" onclick="openSettings()">
+                    <div class="icon-box" style="background:linear-gradient(160deg,#8a8f98,#4a4e57);">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2">
+                            <circle cx="12" cy="12" r="3"></circle>
+                            <path d="M19.4 15a1.7 1.7 0 0 0 .34 1.87"></path>
+                        </svg>
+                    </div>
+                    <span>Settings</span>
+                </div>
+            </div>
+            <div class="start-user-row">
+                <div class="start-user">
+                    <div class="start-user-avatar">BB</div>
+                    <span>Bambam</span>
+                </div>
+                <button class="power-btn" title="Power">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 2v10"></path>
+                        <path d="M18.4 6.6a9 9 0 1 1-12.77.04"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- ===== PORTFOLIO WINDOW ===== -->
+        <div id="portfolio-window" onmousedown="bringToFront(this)">
+            <div class="window-titlebar">
+                <div class="titlebar-label">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <rect x="3" y="4" width="18" height="16" rx="2"></rect>
+                        <path d="M3 9h18"></path>
+                    </svg>
+                    <span>My Portfolio</span>
+                </div>
+                <div class="window-controls">
+                    <button title="Minimize" onclick="closeWindow()"><svg viewBox="0 0 12 12" fill="none"
+                            stroke="currentColor" stroke-width="1.4">
+                            <line x1="1" y1="10" x2="11" y2="10"></line>
+                        </svg></button>
+                    <button title="Maximize" onclick="toggleMaximize()"><svg viewBox="0 0 12 12" fill="none"
+                            stroke="currentColor" stroke-width="1.4">
+                            <rect x="1.5" y="1.5" width="9" height="9"></rect>
+                        </svg></button>
+                    <button class="close-btn" title="Close" onclick="closeWindow()"><svg viewBox="0 0 12 12" fill="none"
+                            stroke="currentColor" stroke-width="1.4">
+                            <line x1="1" y1="1" x2="11" y2="11"></line>
+                            <line x1="11" y1="1" x2="1" y2="11"></line>
+                        </svg></button>
+                </div>
+            </div>
+
+            <div class="window-body">
+
+                <!-- sidebar nav — matches reference screenshot -->
+                <nav class="sidebar">
+                    <button class="nav-item active" data-section="about" onclick="showSection('about', this)">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <circle cx="12" cy="8" r="4"></circle>
+                            <path d="M4 21c0-4 3.5-7 8-7s8 3 8 7"></path>
+                        </svg>
+                        <span>About Me</span>
+                    </button>
+                    <button class="nav-item" data-section="projects" onclick="showSection('projects', this)">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                        </svg>
+                        <span>Projects</span>
+                    </button>
+                    <button class="nav-item" data-section="skills" onclick="showSection('skills', this)">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8-6.2-3.3-6.2 3.3 1.2-6.8-5-4.9 6.9-1z"></path>
+                        </svg>
+                        <span>Skills</span>
+                    </button>
+                    <button class="nav-item" data-section="resume" onclick="showSection('resume', this)">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                            <path d="M14 2v6h6"></path>
+                            <path d="M9 13h6"></path>
+                            <path d="M9 17h6"></path>
+                        </svg>
+                        <span>Resume</span>
+                    </button>
+                    <button class="nav-item" data-section="contact" onclick="showSection('contact', this)">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+                            <path d="m2 7 10 6 10-6"></path>
+                        </svg>
+                        <span>Contact</span>
+                    </button>
+                </nav>
+
+                <!-- content -->
+                <div class="content-area">
+
+                    <section id="section-about" class="content-section active">
+                        <div class="eyebrow">Welcome</div>
+                        <div class="profile-row">
+                            <div class="profile-photo">BB</div>
+                            <div>
+                                <h1>Bambam</h1>
+                                <p style="color:#8f8f94; font-size:13px;">Mobolaji Bamidele Wasiu · Computer
+                                    Engineering, LAUTECH</p>
+                            </div>
+                        </div>
+                        <p class="lead">I'm a Computer Engineering student at LAUTECH (500 Level) building toward
+                            software development, currently deepening my front-end and JavaScript skills through the web
+                            development programme at SQI College of ICT. This desktop is my portfolio — double‑click
+                            around, or use the sidebar to explore my projects, skills, resume, and contact details.</p>
+                        <div class="about-tags">
+                            <div class="tag">Computer Engineering</div>
+                            <div class="tag">Web Development</div>
+                            <div class="tag">HTML &amp; CSS</div>
+                            <div class="tag">JavaScript</div>
+                            <div class="tag">LAUTECH</div>
+                        </div>
+                    </section>
+
+                    <section id="section-projects" class="content-section">
+                        <div class="eyebrow">Selected Work</div>
+                        <h1>Projects</h1>
+                        <p class="lead" style="margin-top:6px;">A few of the builds from my SQI coursework and personal
+                            practice.</p>
+                        <div class="project-grid">
+                            <div class="project-card">
+                                <div class="project-thumb">[PROJECT IMAGE]</div>
+                                <h3>Bambam OS — Portfolio Desktop</h3>
+                                <p>This site. A Windows‑style desktop UI — boot/lock screen, taskbar, Start menu, and
+                                    app window — built to present my work in a memorable way.</p>
+                                <div class="stack"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+                            </div>
+                            <div class="project-card">
+                                <div class="project-thumb">[PROJECT IMAGE]</div>
+                                <h3>Cowrywise Clone</h3>
+                                <p>Pixel‑level clone of the Cowrywise marketing site, including the investment
+                                    trust‑cards section and feature badges.</p>
+                                <div class="stack"><span>HTML</span><span>CSS</span></div>
+                            </div>
+                            <div class="project-card">
+                                <div class="project-thumb">[PROJECT IMAGE]</div>
+                                <h3>Jumia Order Form</h3>
+                                <p>A cart‑style order form with add, edit, and delete items, each rendered as its own
+                                    card with inline actions.</p>
+                                <div class="stack"><span>JavaScript</span><span>DOM</span><span>Bootstrap</span></div>
+                            </div>
+                            <div class="project-card">
+                                <div class="project-thumb">[PROJECT IMAGE]</div>
+                                <h3>PalmPay &amp; Tesla Clones</h3>
+                                <p>Layout‑accurate clones of the PalmPay and Tesla (Model S) pages, focused on
+                                    responsive precision.</p>
+                                <div class="stack"><span>HTML</span><span>CSS</span><span>Responsive</span></div>
+                            </div>
+                            <div class="project-card">
+                                <div class="project-thumb">[PROJECT IMAGE]</div>
+                                <h3>LinkedIn Masterclass Landing Page</h3>
+                                <p>A landing page built for a client's LinkedIn masterclass — copy, layout, and CTA
+                                    structure done end to end.</p>
+                                <div class="stack"><span>HTML</span><span>CSS</span></div>
+                            </div>
+                            <div class="project-card">
+                                <div class="project-thumb">[PROJECT IMAGE]</div>
+                                <h3>Add Your Next Project</h3>
+                                <p>[Duplicate a .project-card block and swap in the title, description, thumbnail, and
+                                    stack tags.]</p>
+                                <div class="stack"><span>+ Add stack</span></div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="section-skills" class="content-section">
+                        <div class="eyebrow">Toolbox</div>
+                        <h1>Skills</h1>
+                        <div class="skills-group">
+                            <h2>Front‑end</h2>
+                            <div class="skill-bar-row">
+                                <div class="skill-label"><span>HTML</span><span>Strong</span></div>
+                                <div class="skill-bar-track">
+                                    <div class="skill-bar-fill" style="width:85%;"></div>
+                                </div>
+                            </div>
+                            <div class="skill-bar-row">
+                                <div class="skill-label"><span>CSS</span><span>Growing</span></div>
+                                <div class="skill-bar-track">
+                                    <div class="skill-bar-fill" style="width:65%;"></div>
+                                </div>
+                            </div>
+                            <div class="skill-bar-row">
+                                <div class="skill-label"><span>JavaScript</span><span>Growing</span></div>
+                                <div class="skill-bar-track">
+                                    <div class="skill-bar-fill" style="width:60%;"></div>
+                                </div>
+                            </div>
+                            <div class="skill-bar-row">
+                                <div class="skill-label"><span>Bootstrap</span><span>Familiar</span></div>
+                                <div class="skill-bar-track">
+                                    <div class="skill-bar-fill" style="width:45%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skills-group">
+                            <h2>Tools &amp; Practices</h2>
+                            <div class="about-tags">
+                                <div class="tag">Git &amp; Version Control</div>
+                                <div class="tag">Semantic HTML</div>
+                                <div class="tag">Responsive Design</div>
+                                <div class="tag">DOM Manipulation</div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="section-resume" class="content-section">
+                        <div class="eyebrow">Download</div>
+                        <h1>Resume</h1>
+                        <p class="lead">Grab a copy of my latest resume, or view it inline below.</p>
+                        <div class="resume-box">
+                            [RESUME FILE — replace this box with an &lt;embed&gt; of your resume PDF, or keep it as a
+                            download prompt]
+                        </div>
+                        <a class="btn-primary" href="#">
+                            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="#fff" stroke-width="2">
+                                <path d="M12 3v12"></path>
+                                <path d="m7 10 5 5 5-5"></path>
+                                <path d="M5 21h14"></path>
+                            </svg>
+                            Download Resume
+                        </a>
+                    </section>
+
+                    <section id="section-contact" class="content-section">
+                        <div class="eyebrow">Let's Talk</div>
+                        <h1>Contact</h1>
+                        <p class="lead">Best ways to reach me — swap the placeholders below for your real details.</p>
+                        <div class="contact-list">
+                            <div class="contact-row">
+                                <div class="icon-circle"><svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+                                        <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+                                        <path d="m2 7 10 6 10-6"></path>
+                                    </svg></div>
+                                <span>mobolajibambam2025@gmail.com</span>
+                            </div>
+                            <div class="contact-row">
+                                <div class="icon-circle"><svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+                                        <path
+                                            d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.68 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.32 1.85.55 2.81.68A2 2 0 0 1 22 16.92z">
+                                        </path>
+                                    </svg></div>
+                                <span>07062729106</span>
+                            </div>
+                            <div class="contact-row">
+                                <div class="icon-circle"><svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+                                        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z">
+                                        </path>
+                                    </svg></div>
+                                <span>[LinkedIn profile]</span>
+                            </div>
+                            <div class="contact-row">
+                                <div class="icon-circle"><svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+                                        <path
+                                            d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                                        </path>
+                                    </svg></div>
+                                <span>https://github.com/JESUBAMI</span>
+                            </div>
+                        </div>
+                    </section>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== SETTINGS WINDOW ===== -->
+        <div id="settings-window" onmousedown="bringToFront(this)">
+            <div class="window-titlebar">
+                <div class="titlebar-label">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="3"></circle>
+                        <path
+                            d="M19.4 15a1.7 1.7 0 0 0 .34 1.87l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.7 1.7 0 0 0-1.87-.34 1.7 1.7 0 0 0-1 1.55V21a2 2 0 0 1-4 0v-.09A1.7 1.7 0 0 0 9 19.4a1.7 1.7 0 0 0-1.87.34l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.7 1.7 0 0 0 4.6 15a1.7 1.7 0 0 0-1.55-1H3a2 2 0 0 1 0-4h.09A1.7 1.7 0 0 0 4.6 9a1.7 1.7 0 0 0-.34-1.87l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.7 1.7 0 0 0 9 4.6a1.7 1.7 0 0 0 1-1.55V3a2 2 0 0 1 4 0v.09a1.7 1.7 0 0 0 1 1.55 1.7 1.7 0 0 0 1.87-.34l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.7 1.7 0 0 0 19.4 9a1.7 1.7 0 0 0 1.55 1H21a2 2 0 0 1 0 4h-.09a1.7 1.7 0 0 0-1.55 1z">
+                        </path>
+                    </svg>
+                    <span>Settings</span>
+                </div>
+                <div class="window-controls">
+                    <button title="Minimize" onclick="closeSettings()"><svg viewBox="0 0 12 12" fill="none"
+                            stroke="currentColor" stroke-width="1.4">
+                            <line x1="1" y1="10" x2="11" y2="10"></line>
+                        </svg></button>
+                    <button title="Maximize" onclick="toggleMaximizeSettings()"><svg viewBox="0 0 12 12" fill="none"
+                            stroke="currentColor" stroke-width="1.4">
+                            <rect x="1.5" y="1.5" width="9" height="9"></rect>
+                        </svg></button>
+                    <button class="close-btn" title="Close" onclick="closeSettings()"><svg viewBox="0 0 12 12"
+                            fill="none" stroke="currentColor" stroke-width="1.4">
+                            <line x1="1" y1="1" x2="11" y2="11"></line>
+                            <line x1="11" y1="1" x2="1" y2="11"></line>
+                        </svg></button>
+                </div>
+            </div>
+
+            <div class="settings-body">
+
+                <nav class="settings-nav">
+                    <div class="settings-account-card">
+                        <div class="avatar">BB</div>
+                        <div>
+                            <div class="name">Bambam</div>
+                            <div class="sub">Local Account</div>
+                        </div>
+                    </div>
+                    <button class="settings-nav-item active" data-pane="system"
+                        onclick="showSettingsPane('system', this)">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <rect x="2" y="3" width="20" height="14" rx="2"></rect>
+                            <path d="M8 21h8"></path>
+                            <path d="M12 17v4"></path>
+                        </svg>
+                        <span>System</span>
+                    </button>
+                    <button class="settings-nav-item" data-pane="personalization"
+                        onclick="showSettingsPane('personalization', this)">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <path d="M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5z"></path>
+                        </svg>
+                        <span>Personalization</span>
+                    </button>
+                    <button class="settings-nav-item" data-pane="apps" onclick="showSettingsPane('apps', this)">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <rect x="3" y="3" width="7" height="7" rx="1"></rect>
+                            <rect x="14" y="3" width="7" height="7" rx="1"></rect>
+                            <rect x="3" y="14" width="7" height="7" rx="1"></rect>
+                            <rect x="14" y="14" width="7" height="7" rx="1"></rect>
+                        </svg>
+                        <span>Apps</span>
+                    </button>
+                    <button class="settings-nav-item" data-pane="accounts" onclick="showSettingsPane('accounts', this)">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <circle cx="12" cy="8" r="4"></circle>
+                            <path d="M4 21c0-4 3.5-7 8-7s8 3 8 7"></path>
+                        </svg>
+                        <span>Accounts</span>
+                    </button>
+                    <button class="settings-nav-item" data-pane="time" onclick="showSettingsPane('time', this)">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="9"></circle>
+                            <path d="M12 7v5l3 3"></path>
+                        </svg>
+                        <span>Time &amp; language</span>
+                    </button>
+                    <button class="settings-nav-item" data-pane="privacy" onclick="showSettingsPane('privacy', this)">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <path d="M12 2 4 5v6c0 5 3.4 9 8 11 4.6-2 8-6 8-11V5z"></path>
+                        </svg>
+                        <span>Privacy &amp; security</span>
+                    </button>
+                    <button class="settings-nav-item" data-pane="about" onclick="showSettingsPane('about', this)">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="9"></circle>
+                            <path d="M12 16v-4"></path>
+                            <path d="M12 8h.01"></path>
+                        </svg>
+                        <span>About</span>
+                    </button>
+                </nav>
+
+                <div class="settings-content">
+
+                    <div class="settings-pane active" id="pane-system">
+                        <h1>System</h1>
+                        <div class="settings-card">
+                            <div class="settings-row">
+                                <div>
+                                    <div class="settings-row-label">Night light</div>
+                                    <div class="settings-row-sub">Warmer colors in the evening</div>
+                                </div>
+                                <label class="switch"><input type="checkbox"><span class="track"></span></label>
+                            </div>
+                            <div class="settings-row">
+                                <div>
+                                    <div class="settings-row-label">Notifications</div>
+                                    <div class="settings-row-sub">Get alerts from apps</div>
+                                </div>
+                                <label class="switch"><input type="checkbox" checked><span class="track"></span></label>
+                            </div>
+                        </div>
+                        <div class="settings-card">
+                            <div class="settings-row" style="flex-direction:column; align-items:stretch; gap:8px;">
+                                <div class="settings-row-label">Display brightness</div>
+                                <input type="range" min="0" max="100" value="80">
+                            </div>
+                            <div class="settings-row" style="flex-direction:column; align-items:stretch; gap:8px;">
+                                <div class="settings-row-label">Volume</div>
+                                <input type="range" min="0" max="100" value="60">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="settings-pane" id="pane-personalization">
+                        <h1>Personalization</h1>
+                        <div class="settings-card" style="padding:16px;">
+                            <div class="settings-row-label" style="margin-bottom:12px;">Theme</div>
+                            <div class="theme-options">
+                                <div class="theme-option">
+                                    <div class="theme-swatch selected"
+                                        style="background:linear-gradient(150deg,#16345c,#1b1440);"></div>
+                                    <span>Dark</span>
+                                </div>
+                                <div class="theme-option">
+                                    <div class="theme-swatch"
+                                        style="background:linear-gradient(150deg,#e8e8ea,#c9c9cf);"></div>
+                                    <span>Light</span>
+                                </div>
+                                <div class="theme-option">
+                                    <div class="theme-swatch"
+                                        style="background:linear-gradient(150deg,#16345c 50%,#e8e8ea 50%);"></div>
+                                    <span>Windows default</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="settings-card" style="padding:16px;">
+                            <div class="settings-row-label" style="margin-bottom:10px;">Accent color</div>
+                            <div class="accent-row">
+                                <div class="accent-swatch selected" style="background:#0078D4;">&#10003;</div>
+                                <div class="accent-swatch" style="background:#7c4dff;"></div>
+                                <div class="accent-swatch" style="background:#4fd67a;"></div>
+                                <div class="accent-swatch" style="background:#ff8a50;"></div>
+                                <div class="accent-swatch" style="background:#e81123;"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="settings-pane" id="pane-apps">
+                        <h1>Apps</h1>
+                        <div class="settings-card">
+                            <div class="app-row">
+                                <div class="icon-box" style="background:linear-gradient(160deg,#2f80ed,#1c4faa);"><svg
+                                        viewBox="0 0 24 24" fill="none" stroke-width="2">
+                                        <rect x="3" y="4" width="18" height="16" rx="2"></rect>
+                                        <path d="M3 9h18"></path>
+                                    </svg></div>
+                                <div class="info">
+                                    <div class="n">My Portfolio</div>
+                                    <div class="s">Built‑in app</div>
+                                </div>
+                            </div>
+                            <div class="app-row">
+                                <div class="icon-box" style="background:linear-gradient(160deg,#4fd67a,#1f9a4d);"><svg
+                                        viewBox="0 0 24 24" fill="none" stroke-width="2">
+                                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                    </svg></div>
+                                <div class="info">
+                                    <div class="n">Resume Viewer</div>
+                                    <div class="s">Built‑in app</div>
+                                </div>
+                            </div>
+                            <div class="app-row">
+                                <div class="icon-box" style="background:linear-gradient(160deg,#8a8f98,#4a4e57);"><svg
+                                        viewBox="0 0 24 24" fill="none" stroke-width="2">
+                                        <circle cx="12" cy="12" r="3"></circle>
+                                    </svg></div>
+                                <div class="info">
+                                    <div class="n">Settings</div>
+                                    <div class="s">System app</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="settings-pane" id="pane-accounts">
+                        <h1>Accounts</h1>
+                        <div class="settings-card" style="padding:18px;">
+                            <div class="profile-row" style="margin-bottom:0;">
+                                <div class="profile-photo" style="width:56px;height:56px;font-size:20px;">BB</div>
+                                <div>
+                                    <div style="color:#fff; font-size:15px; font-weight:600;">Bambam</div>
+                                    <div style="color:#8f8f94; font-size:12px;">Mobolaji Bamidele Wasiu &middot; [your
+                                        email]</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="settings-pane" id="pane-time">
+                        <h1>Time &amp; language</h1>
+                        <div class="settings-card">
+                            <div class="settings-row">
+                                <div class="settings-row-label">Current time</div>
+                                <span style="color:#8f8f94; font-size:12.5px;" id="settings-time-readout">&mdash;</span>
+                            </div>
+                            <div class="settings-row">
+                                <div class="settings-row-label">Time zone</div>
+                                <select class="settings-select">
+                                    <option>(UTC+01:00) Lagos</option>
+                                </select>
+                            </div>
+                            <div class="settings-row">
+                                <div class="settings-row-label">Language</div>
+                                <select class="settings-select">
+                                    <option>English (Nigeria)</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="settings-pane" id="pane-privacy">
+                        <h1>Privacy &amp; security</h1>
+                        <div class="settings-card">
+                            <div class="settings-row">
+                                <div>
+                                    <div class="settings-row-label">Camera</div>
+                                    <div class="settings-row-sub">Let apps use your camera</div>
+                                </div>
+                                <label class="switch"><input type="checkbox" checked><span class="track"></span></label>
+                            </div>
+                            <div class="settings-row">
+                                <div>
+                                    <div class="settings-row-label">Microphone</div>
+                                    <div class="settings-row-sub">Let apps use your microphone</div>
+                                </div>
+                                <label class="switch"><input type="checkbox"><span class="track"></span></label>
+                            </div>
+                            <div class="settings-row">
+                                <div>
+                                    <div class="settings-row-label">Location</div>
+                                    <div class="settings-row-sub">Let apps use your location</div>
+                                </div>
+                                <label class="switch"><input type="checkbox"><span class="track"></span></label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="settings-pane" id="pane-about">
+                        <h1>About</h1>
+                        <div class="settings-card" style="padding:6px 16px;">
+                            <div class="about-grid">
+                                <div class="about-row"><span>Device name</span><span>BAMBAM&#8209;OS</span></div>
+                                <div class="about-row"><span>Edition</span><span>Portfolio Edition</span></div>
+                                <div class="about-row"><span>Version</span><span>1.0</span></div>
+                                <div class="about-row"><span>Built with</span><span>HTML &middot; CSS &middot;
+                                        JavaScript</span></div>
+                                <div class="about-row"><span>Developer</span><span>Bambam &mdash; Mobolaji Bamidele
+                                        Wasiu</span></div>
+                                <div class="about-row"><span>Institution</span><span>LAUTECH &middot; SQI College of
+                                        ICT</span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== TASKBAR ===== -->
+        <div id="taskbar">
+            <button class="start-btn" onclick="toggleStartMenu(event)">
+                <div class="win-logo"><span></span><span></span><span></span><span></span></div>
+            </button>
+            <div class="search-bar">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="7"></circle>
+                    <path d="m21 21-4.3-4.3"></path>
+                </svg>
+                <input type="text" placeholder="Search">
+            </div>
+            <div class="taskbar-apps" id="taskbar-apps">
+                <button class="taskbar-app-btn" id="taskbar-portfolio-btn" onclick="toggleWindow()">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <rect x="3" y="4" width="18" height="16" rx="2"></rect>
+                        <path d="M3 9h18"></path>
+                    </svg>
+                </button>
+                <button class="taskbar-app-btn" id="taskbar-settings-btn" onclick="toggleSettings()">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="3"></circle>
+                        <path
+                            d="M19.4 15a1.7 1.7 0 0 0 .34 1.87l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.7 1.7 0 0 0-1.87-.34 1.7 1.7 0 0 0-1 1.55V21a2 2 0 0 1-4 0v-.09A1.7 1.7 0 0 0 9 19.4a1.7 1.7 0 0 0-1.87.34l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.7 1.7 0 0 0 4.6 15a1.7 1.7 0 0 0-1.55-1H3a2 2 0 0 1 0-4h.09A1.7 1.7 0 0 0 4.6 9a1.7 1.7 0 0 0-.34-1.87l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.7 1.7 0 0 0 9 4.6a1.7 1.7 0 0 0 1-1.55V3a2 2 0 0 1 4 0v.09a1.7 1.7 0 0 0 1 1.55 1.7 1.7 0 0 0 1.87-.34l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.7 1.7 0 0 0 19.4 9a1.7 1.7 0 0 0 1.55 1H21a2 2 0 0 1 0 4h-.09a1.7 1.7 0 0 0-1.55 1z">
+                        </path>
+                    </svg>
+                </button>
+            </div>
+            <div class="taskbar-spacer"></div>
+            <div class="system-tray">
+                <div class="tray-icons">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12.55a11 11 0 0 1 14 0"></path>
+                        <path d="M8.5 16.05a6 6 0 0 1 7 0"></path>
+                        <path d="M12 20h.01"></path>
+                    </svg>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M11 5 6 9H2v6h4l5 4z"></path>
+                        <path d="M19 8a7 7 0 0 1 0 8"></path>
+                    </svg>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="2" y="7" width="18" height="10" rx="2"></rect>
+                        <line x1="22" y1="10" x2="22" y2="14"></line>
+                    </svg>
+                </div>
+                <div class="notif-bell">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M6 8a6 6 0 0 1 12 0c0 5 2 6 2 6H4s2-1 2-6"></path>
+                        <path d="M10 21a2 2 0 0 0 4 0"></path>
+                    </svg>
+                    <span class="badge"></span>
+                </div>
+                <div class="clock">
+                    <div id="time">05:52</div>
+                    <div id="date">20/08/26</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
