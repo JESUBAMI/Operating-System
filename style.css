@@ -785,7 +785,6 @@ input {
     margin-top: 16px;
 }
 
-
 .profile-row {
     display: flex;
     align-items: center;
@@ -826,7 +825,7 @@ input {
 
 .project-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 16px;
     margin-top: 22px;
 }
@@ -838,19 +837,29 @@ input {
     padding: 16px;
 }
 
-.project-thumb {
-    height: 90px;
-    border-radius: 6px;
+.project-thumb-link {
+    display: block;
     margin-bottom: 12px;
-    background: repeating-linear-gradient(135deg, #2a2a2e, #2a2a2e 10px, #232326 10px, #232326 20px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #6f6f74;
-    font-size: 11px;
+    border-radius: 6px;
+    overflow: hidden;
 }
 
-/* [PROJECT IMAGE — swap each .project-thumb for a screenshot of the actual project] */
+.project-thumb {
+    display: block;
+    width: 100%;
+    height: 110px;
+    object-fit: cover;
+    object-position: top;
+    border-radius: 6px;
+    transition: transform 200ms ease, opacity 200ms ease;
+}
+
+.project-thumb-link:hover .project-thumb {
+    transform: scale(1.05);
+    opacity: 0.9;
+}
+
+/* [PROJECT LINK — each .project-thumb-link has href="#"; swap for the live URL of that project] */
 .project-card h3 {
     color: #ffffff;
     font-size: 14.5px;
@@ -955,10 +964,6 @@ input {
     gap: 12px;
     color: #d6d6d6;
     font-size: 14px;
-}
-
-.contact-row span a{
-    color: #d6d6d6;;
 }
 
 .contact-row .icon-circle {
